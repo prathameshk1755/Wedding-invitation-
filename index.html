@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prathamesh ❤️ Rutuja Invitation</title>
+
+<style>
+body {
+  margin: 0;
+  background: #000;
+  color: #d4af37;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* DOOR EFFECT */
+.door {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(145deg, #000, #1a0000);
+  z-index: 10;
+  transition: transform 2s ease;
+}
+
+.left { left: 0; }
+.right { right: 0; }
+
+.open .left { transform: translateX(-100%); }
+.open .right { transform: translateX(100%); }
+
+/* BUTTON */
+#enterBtn {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 20px;
+  background: gold;
+  color: black;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 20;
+  border-radius: 20px;
+}
+
+/* CONTENT */
+.content {
+  display: none;
+  padding-top: 80px;
+}
+
+.open .content {
+  display: block;
+}
+
+/* TITLE */
+h1 {
+  font-size: 28px;
+}
+
+/* CARD */
+.card {
+  margin: 20px auto;
+  padding: 18px;
+  width: 90%;
+  max-width: 500px;
+  border: 1px solid gold;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+}
+
+/* BUTTON */
+a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: #00c2ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+}
+
+/* PHOTO */
+img {
+  width: 90%;
+  max-width: 320px;
+  margin-top: 20px;
+  border-radius: 12px;
+  border: 2px solid gold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- DOORS -->
+<div class="door left"></div>
+<div class="door right"></div>
+
+<!-- ENTER BUTTON -->
+<button id="enterBtn" onclick="openDoor()">✨ ENTER INVITATION ✨</button>
+
+<!-- CONTENT -->
+<div class="content">
+
+<h1>Prathamesh ❤️ Rutuja</h1>
+
+<!-- SIMANT PUJAN -->
+<div class="card">
+  <h2>✨ Simant Pujan ✨</h2>
+  <p>08 May 2026 • 07:00 PM</p>
+
+  <p>
+    Adarsh Lawns<br>
+    Sambhaji Nagar Road,<br>
+    New Railway Station, Barshi - 413401
+  </p>
+
+  <a href="https://www.google.com/maps/search/?api=1&query=Adarsh+Lawns+Barshi+413401"
+     target="_blank">
+     📍 Open Location
+  </a>
+</div>
+
+<!-- WEDDING -->
+<div class="card">
+  <h2>💍 Wedding Ceremony</h2>
+  <p>09 May 2026 • 12:23 PM</p>
+</div>
+
+<!-- PHOTO (SAFE + FALLBACK) -->
+<img src="photo1.jpg"
+     alt="Wedding Photo"
+     onerror="this.src='https://via.placeholder.com/320x200?text=Photo+Not+Found'">
+
+</div>
+
+<script>
+function openDoor() {
+  document.body.classList.add("open");
+  document.getElementById("enterBtn").style.display = "none";
+}
+</script>
+
+</body>
+</html>
