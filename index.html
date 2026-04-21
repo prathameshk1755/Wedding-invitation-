@@ -8,20 +8,40 @@
 <style>
 body {
   margin: 0;
-  background: #000;
-  color: #d4af37;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   text-align: center;
   overflow-x: hidden;
+  color: #d4af37;
+  background: linear-gradient(-45deg, #000000, #1a0000, #2b0000, #000);
+  background-size: 400% 400%;
+  animation: bgMove 12s infinite alternate;
 }
 
-/* DOOR EFFECT */
+@keyframes bgMove {
+  0% { background-position: 0% }
+  100% { background-position: 100% }
+}
+
+/* Sparkle */
+body::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.2;
+}
+
+/* DOORS */
 .door {
   position: fixed;
   top: 0;
   width: 50%;
   height: 100%;
-  background: linear-gradient(145deg, #000, #1a0000);
+  background:
+    radial-gradient(circle, rgba(212,175,55,0.2), transparent 70%),
+    linear-gradient(145deg, #000, #1a0000);
+  border: 2px solid gold;
   z-index: 10;
   transition: transform 2s ease;
 }
@@ -38,14 +58,15 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 12px 20px;
+  padding: 14px 22px;
   background: gold;
   color: black;
   border: none;
   font-weight: bold;
   cursor: pointer;
   z-index: 20;
-  border-radius: 20px;
+  border-radius: 25px;
+  box-shadow: 0 0 15px gold;
 }
 
 /* CONTENT */
@@ -53,28 +74,26 @@ body {
   display: none;
   padding-top: 80px;
 }
+.open .content { display: block; }
 
-.open .content {
-  display: block;
-}
-
-/* TITLE */
 h1 {
-  font-size: 28px;
+  font-size: 30px;
+  text-shadow: 0 0 10px gold;
 }
 
 /* CARD */
 .card {
   margin: 20px auto;
-  padding: 18px;
+  padding: 20px;
   width: 90%;
   max-width: 500px;
   border: 1px solid gold;
-  border-radius: 12px;
+  border-radius: 15px;
   background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
 }
 
-/* BUTTON */
+/* LINK BUTTON */
 a {
   display: inline-block;
   margin-top: 10px;
@@ -85,7 +104,7 @@ a {
   border-radius: 20px;
 }
 
-/* PHOTO */
+/* IMAGE */
 img {
   width: 90%;
   max-width: 320px;
@@ -93,58 +112,120 @@ img {
   border-radius: 12px;
   border: 2px solid gold;
 }
+
+/* COUNTDOWN */
+#countdown {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* FOOTER */
+.footer {
+  margin: 40px 20px;
+  font-size: 18px;
+  color: #fff;
+  line-height: 1.6;
+}
 </style>
 </head>
 
 <body>
 
-<!-- DOORS -->
 <div class="door left"></div>
 <div class="door right"></div>
 
-<!-- ENTER BUTTON -->
 <button id="enterBtn" onclick="openDoor()">✨ ENTER INVITATION ✨</button>
 
-<!-- CONTENT -->
 <div class="content">
 
 <h1>Prathamesh ❤️ Rutuja</h1>
 
-<!-- SIMANT PUJAN -->
-<div class="card">
-  <h2>✨ Simant Pujan ✨</h2>
-  <p>08 May 2026 • 07:00 PM</p>
+<h2>✨ Each passing moment brings us closer to the beginning of our forever 💖</h2>
+<div id="countdown"></div>
 
+<!-- ADDRESS -->
+<div class="card">
+  <h2>📍 Address</h2>
   <p>
     Adarsh Lawns<br>
     Sambhaji Nagar Road,<br>
-    New Railway Station, Barshi - 413401
+    New Railway Station,<br>
+    Barshi - 413401
   </p>
+</div>
 
-  <a href="https://www.google.com/maps/search/?api=1&query=Adarsh+Lawns+Barshi+413401"
-     target="_blank">
-     📍 Open Location
+<!-- LOCATION -->
+<div class="card">
+  <h2>🗺️ Location</h2>
+  <iframe 
+    src="https://www.google.com/maps?q=Adarsh+Lawns+Barshi&output=embed"
+    width="100%" height="200" style="border:0;">
+  </iframe>
+
+  <a href="https://www.google.com/maps/search/?api=1&query=Adarsh+Lawns+Barshi+413401" target="_blank">
+    📍 Open in Google Maps
   </a>
 </div>
 
-<!-- WEDDING -->
+<!-- EVENTS -->
+<div class="card">
+  <h2>✨ Simant Pujan ✨</h2>
+  <p>08 May 2026 • 07:00 PM</p>
+</div>
+
 <div class="card">
   <h2>💍 Wedding Ceremony</h2>
-  <p>09 May 2026 • 12:23 PM</p>
+  <p>09 May 2026 • 12:23 PM (Auspicious Muhurat)</p>
+  <p>As the sacred hour arrives, two souls unite in a bond of love and forever 💖</p>
 </div>
 
-<!-- PHOTO (SAFE + FALLBACK) -->
 <img src="photo1.jpg"
-     alt="Wedding Photo"
-     onerror="this.src='https://via.placeholder.com/320x200?text=Photo+Not+Found'">
+     onerror="this.src='https://via.placeholder.com/320x200?text=Photo'">
+
+<!-- FINAL MESSAGE -->
+<div class="footer">
+  <p>
+    In the gentle light of this beautiful day,  
+    our hearts will unite in a sacred bond of love 💖
+  </p>
+
+  <p>
+    At this special moment of 12:23 PM,  
+    a new journey begins… filled with dreams, laughter, and forever ✨
+  </p>
+
+  <p>
+    Your presence will be the most precious blessing  
+    as we step into this new chapter together 💍
+  </p>
+</div>
 
 </div>
+
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+</audio>
 
 <script>
 function openDoor() {
   document.body.classList.add("open");
   document.getElementById("enterBtn").style.display = "none";
+  document.getElementById("bgMusic").play();
 }
+
+var weddingDate = new Date("May 09, 2026 12:23:00").getTime();
+
+setInterval(function() {
+  var now = new Date().getTime();
+  var gap = weddingDate - now;
+
+  var d = Math.floor(gap / (1000*60*60*24));
+  var h = Math.floor((gap % (1000*60*60*24))/(1000*60*60));
+  var m = Math.floor((gap % (1000*60*60))/(1000*60));
+
+  document.getElementById("countdown").innerHTML =
+    d + " Days " + h + " Hours " + m + " Minutes";
+}, 1000);
 </script>
 
 </body>
