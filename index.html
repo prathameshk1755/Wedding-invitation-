@@ -3,229 +3,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prathamesh ❤️ Rutuja Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+<title>Prathamesh ❤️ Rutuja</title>
 
 <style>
+:root {
+  --gold: #d4af37;
+}
+
+/* 🌺 BACKGROUND */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  text-align: center;
+  font-family: 'Cinzel', serif;
+  color: #fff;
   overflow-x: hidden;
-  color: #d4af37;
-  background: linear-gradient(-45deg, #000000, #1a0000, #2b0000, #000);
-  background-size: 400% 400%;
-  animation: bgMove 12s infinite alternate;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
+    url("bg.jpg");
+
+  background-size: cover;
+  background-position: center;
 }
 
-@keyframes bgMove {
-  0% { background-position: 0% }
-  100% { background-position: 100% }
-}
-
-/* Sparkle */
-body::after {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: url('https://www.transparenttextures.com/patterns/stardust.png');
-  opacity: 0.2;
-}
-
-/* DOORS */
-.door {
+/* 💡 LIGHT EFFECT */
+.light {
   position: fixed;
   top: 0;
-  width: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
   height: 100%;
-  background:
-    radial-gradient(circle, rgba(212,175,55,0.2), transparent 70%),
-    linear-gradient(145deg, #000, #1a0000);
-  border: 2px solid gold;
-  z-index: 10;
-  transition: transform 2s ease;
+  background: radial-gradient(circle, rgba(255,215,0,0.25), transparent 60%);
+  opacity: 0;
+  transition: opacity 2s ease;
+  pointer-events: none;
+  z-index: 5;
 }
 
-.left { left: 0; }
-.right { right: 0; }
+.open .light {
+  opacity: 1;
+}
 
-.open .left { transform: translateX(-100%); }
-.open .right { transform: translateX(100%); }
+/* 🚪 DOORS */
+.door {
+  position: fixed;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  z-index: 10;
 
-/* BUTTON */
+  background: linear-gradient(160deg, #000, #2b0000);
+  border: 2px solid var(--gold);
+
+  transition: transform 2s cubic-bezier(0.77, 0, 0.18, 1);
+  backface-visibility: hidden;
+}
+
+.left {
+  left: 0;
+  transform-origin: left;
+}
+
+.right {
+  right: 0;
+  transform-origin: right;
+}
+
+/* 🎬 FULL OPEN FIX */
+.open .left {
+  transform: perspective(1200px) rotateY(-75deg) translateX(-120%);
+}
+
+.open .right {
+  transform: perspective(1200px) rotateY(75deg) translateX(120%);
+}
+
+/* 🪔 BUTTON */
 #enterBtn {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 14px 22px;
-  background: gold;
+  padding: 14px 30px;
+
+  background: linear-gradient(45deg, gold, #ffd700);
   color: black;
+
+  border-radius: 40px;
   border: none;
   font-weight: bold;
   cursor: pointer;
-  z-index: 20;
-  border-radius: 25px;
-  box-shadow: 0 0 15px gold;
+
+  z-index: 999;
 }
 
 /* CONTENT */
 .content {
-  display: none;
-  padding-top: 80px;
+  opacity: 0;
+  transform: scale(0.95) translateY(40px);
+  transition: 1.5s ease;
+  padding: 80px 20px;
+  text-align: center;
 }
-.open .content { display: block; }
 
+.open .content {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* NAMES */
 h1 {
-  font-size: 30px;
-  text-shadow: 0 0 10px gold;
+  font-family: 'Great Vibes', cursive;
+  font-size: 56px;
+
+  background: linear-gradient(45deg, #d4af37, #fff2c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* COUNTDOWN TITLE */
+.count-title {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #ddd;
+}
+
+/* COUNTDOWN */
+#countdown {
+  margin: 10px 0 30px;
+  font-size: 20px;
+  color: var(--gold);
 }
 
 /* CARD */
 .card {
-  margin: 20px auto;
-  padding: 20px;
-  width: 90%;
-  max-width: 500px;
-  border: 1px solid gold;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(8px);
-}
+  margin: 25px auto;
+  padding: 22px;
+  max-width: 480px;
 
-/* LINK BUTTON */
-a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 16px;
-  background: #00c2ff;
-  color: white;
-  text-decoration: none;
-  border-radius: 20px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 15px;
+
+  border: 1px solid rgba(212,175,55,0.4);
 }
 
 /* IMAGE */
 img {
   width: 90%;
   max-width: 320px;
+  border-radius: 15px;
+  border: 2px solid var(--gold);
   margin-top: 20px;
-  border-radius: 12px;
-  border: 2px solid gold;
-}
-
-/* COUNTDOWN */
-#countdown {
-  font-size: 20px;
-  margin-top: 10px;
 }
 
 /* FOOTER */
 .footer {
-  margin: 40px 20px;
-  font-size: 18px;
-  color: #fff;
-  line-height: 1.6;
+  margin-top: 60px;
+  font-size: 15px;
+  color: #ddd;
 }
 </style>
 </head>
 
 <body>
 
+<div class="light"></div>
+
 <div class="door left"></div>
 <div class="door right"></div>
 
-<button id="enterBtn" onclick="openDoor()">✨ ENTER INVITATION ✨</button>
+<button id="enterBtn">🪔 Enter Invitation 🪔</button>
 
 <div class="content">
 
 <h1>Prathamesh ❤️ Rutuja</h1>
 
-<h2>✨ Each passing moment brings us closer to the beginning of our forever 💖</h2>
+<p class="count-title">
+With every passing moment, we move closer to our auspicious Muhurat…
+</p>
+
 <div id="countdown"></div>
 
-<!-- ADDRESS -->
 <div class="card">
-  <h2>📍 Address</h2>
-  <p>
-    Adarsh Lawns<br>
-    Sambhaji Nagar Road,<br>
-    New Railway Station,<br>
-    Barshi - 413401
-  </p>
-</div>
-
-<!-- LOCATION -->
-<div class="card">
-  <h2>🗺️ Location</h2>
-  <iframe 
-    src="https://www.google.com/maps?q=Adarsh+Lawns+Barshi&output=embed"
-    width="100%" height="200" style="border:0;">
-  </iframe>
-
-  <a href="https://www.google.com/maps/search/?api=1&query=Adarsh+Lawns+Barshi+413401" target="_blank">
-    📍 Open in Google Maps
-  </a>
-</div>
-
-<!-- EVENTS -->
-<div class="card">
-  <h2>✨ Simant Pujan ✨</h2>
-  <p>08 May 2026 • 07:00 PM</p>
+  <h3>💍 Wedding Ceremony</h3>
+  <p>09 May 2026 • 12:23 PM</p>
 </div>
 
 <div class="card">
-  <h2>💍 Wedding Ceremony</h2>
-  <p>09 May 2026 • 12:23 PM (Auspicious Muhurat)</p>
-  <p>As the sacred hour arrives, two souls unite in a bond of love and forever 💖</p>
+  <h3>📍 Address</h3>
+  <p>Adarsh Lawns, Barshi - 413401</p>
 </div>
 
-<img src="photo1.jpg"
-     onerror="this.src='https://via.placeholder.com/320x200?text=Photo'">
+<div class="card">
+  <h3>🗺️ Location</h3>
+  <iframe src="https://www.google.com/maps?q=Adarsh+Lawns+Barshi&output=embed"
+          width="100%" height="200"></iframe>
+</div>
 
-<!-- FINAL MESSAGE -->
+<img src="photo1.jpg" onerror="this.src='https://via.placeholder.com/300'">
+
 <div class="footer">
   <p>
-    In the gentle light of this beautiful day,  
-    our hearts will unite in a sacred bond of love 💖
-  </p>
-
-  <p>
-    At this special moment of 12:23 PM,  
-    a new journey begins… filled with dreams, laughter, and forever ✨
-  </p>
-
-  <p>
-    Your presence will be the most precious blessing  
-    as we step into this new chapter together 💍
+    Two souls, one destiny, bound by love and tradition…  
+    Your presence will make our celebration complete 💖
   </p>
 </div>
 
 </div>
-
-<audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
-</audio>
 
 <script>
-function openDoor() {
-  document.body.classList.add("open");
-  document.getElementById("enterBtn").style.display = "none";
-  document.getElementById("bgMusic").play();
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("enterBtn");
 
-var weddingDate = new Date("May 09, 2026 12:23:00").getTime();
+  btn.addEventListener("click", function () {
+    document.body.classList.add("open");
+    btn.style.display = "none";
+  });
+});
 
-setInterval(function() {
-  var now = new Date().getTime();
-  var gap = weddingDate - now;
+/* COUNTDOWN */
+const weddingDate = new Date("2026-05-09T12:23:00").getTime();
 
-  var d = Math.floor(gap / (1000*60*60*24));
-  var h = Math.floor((gap % (1000*60*60*24))/(1000*60*60));
-  var m = Math.floor((gap % (1000*60*60))/(1000*60));
+function updateCountdown() {
+  const now = new Date().getTime();
+  const gap = weddingDate - now;
+
+  if (gap <= 0) {
+    document.getElementById("countdown").innerHTML = "💍 It's Wedding Time!";
+    return;
+  }
+
+  const d = Math.floor(gap / (1000*60*60*24));
+  const h = Math.floor((gap % (1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((gap % (1000*60*60))/(1000*60));
+  const s = Math.floor((gap % (1000*60))/1000);
 
   document.getElementById("countdown").innerHTML =
-    d + " Days " + h + " Hours " + m + " Minutes";
-}, 1000);
+    `${d} days • ${h} hrs • ${m} min • ${s} sec`;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
 </script>
 
 </body>
